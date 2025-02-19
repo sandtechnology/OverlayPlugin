@@ -191,7 +191,8 @@ namespace RainbowMage.OverlayPlugin.EventSources
             Config.SaveConfig(config);
         }
 
-    public override void Start() {
+        public override void Start()
+        {
             // Our own timer with a higher frequency than OverlayPlugin since we want to see
             // the effect of log messages quickly.
             fast_update_timer_ = new System.Timers.Timer();
@@ -217,7 +218,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             pc_locale_ = System.Globalization.CultureInfo.CurrentUICulture.Name;
             var repository = container.Resolve<FFXIVRepository>();
 
-            cactbot_version_ = new Version(0,33,7,0);
+            cactbot_version_ = new Version(0, 33, 7, 0);
             overlay_plugin_version_ = typeof(IOverlay).Assembly.GetName().Version;
             ffxiv_plugin_version_ = repository.GetPluginVersion();
             act_version_ = typeof(ActGlobals).Assembly.GetName().Version;
@@ -725,7 +726,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             if (config_dir != null)
                 Config.UserConfigFile = config_dir;
         }
-          
+
 
         private JObject FetchUserFiles(JObject msg)
         {

@@ -229,7 +229,7 @@ namespace RainbowMage.OverlayPlugin.Overlays
         {
             this.overlay.Overlay.Renderer.ClearCache();
         }
-        
+
         private void buttonMiniParseSelectFile_Click(object sender, EventArgs e)
         {
             var ofd = new OpenFileDialog();

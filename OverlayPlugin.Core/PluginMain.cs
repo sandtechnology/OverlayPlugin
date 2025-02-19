@@ -289,34 +289,34 @@ namespace RainbowMage.OverlayPlugin
                             // Wrap FFXIV plugin related initialization in try/catch to allow OP to work when FFXIV plugin isn't present
                             try
                             {
-                                    // Initialize the parser in the second phase since it needs the FFXIV plugin.
-                                    // If OverlayPlugin is placed above the FFXIV plugin, it won't be available in the first
-                                    // phase but it'll be loaded by the time we enter the second phase.
-                                    _container.Register(new FFXIVRepository(_container));
-                                    _container.Register(new NetworkParser(_container));
-                                    _container.Register(new TriggIntegration(_container));
-                                    _container.Register(new FFXIVCustomLogLines(_container));
-                                    _container.Register(new MemoryProcessors.FFXIVClientStructs.Data(_container));
+                                // Initialize the parser in the second phase since it needs the FFXIV plugin.
+                                // If OverlayPlugin is placed above the FFXIV plugin, it won't be available in the first
+                                // phase but it'll be loaded by the time we enter the second phase.
+                                _container.Register(new FFXIVRepository(_container));
+                                _container.Register(new NetworkParser(_container));
+                                _container.Register(new TriggIntegration(_container));
+                                _container.Register(new FFXIVCustomLogLines(_container));
+                                _container.Register(new MemoryProcessors.FFXIVClientStructs.Data(_container));
 
-                                    // Register FFXIV memory reading subcomponents.
-                                    // Must be done before loading addons.
-                                    _container.Register(new FFXIVMemory(_container));
+                                // Register FFXIV memory reading subcomponents.
+                                // Must be done before loading addons.
+                                _container.Register(new FFXIVMemory(_container));
 
-                                    // These are registered to be lazy-loaded. Use interface to force TinyIoC to use singleton pattern.
-                                    _container.Register<ICombatantMemory, CombatantMemoryManager>();
-                                    _container.Register<ITargetMemory, TargetMemoryManager>();
-                                    _container.Register<IClientFrameworkMemory, ClientFrameworkMemoryManager>();
-                                    _container
-                                        .Register<IContentFinderSettingsMemory, ContentFinderSettingsMemoryManager>();
-                                    _container.Register<IAggroMemory, AggroMemoryManager>();
-                                    _container.Register<IEnmityMemory, EnmityMemoryManager>();
-                                    _container.Register<IEnmityHudMemory, EnmityHudMemoryManager>();
-                                    _container.Register<IInCombatMemory, InCombatMemoryManager>();
-                                    _container.Register<IAtkStageMemory, AtkStageMemoryManager>();
-                                    _container.Register<IPartyMemory, PartyMemoryManager>();
-                                    _container.Register<IJobGaugeMemory, JobGaugeMemoryManager>();
+                                // These are registered to be lazy-loaded. Use interface to force TinyIoC to use singleton pattern.
+                                _container.Register<ICombatantMemory, CombatantMemoryManager>();
+                                _container.Register<ITargetMemory, TargetMemoryManager>();
+                                _container.Register<IClientFrameworkMemory, ClientFrameworkMemoryManager>();
+                                _container
+                                    .Register<IContentFinderSettingsMemory, ContentFinderSettingsMemoryManager>();
+                                _container.Register<IAggroMemory, AggroMemoryManager>();
+                                _container.Register<IEnmityMemory, EnmityMemoryManager>();
+                                _container.Register<IEnmityHudMemory, EnmityHudMemoryManager>();
+                                _container.Register<IInCombatMemory, InCombatMemoryManager>();
+                                _container.Register<IAtkStageMemory, AtkStageMemoryManager>();
+                                _container.Register<IPartyMemory, PartyMemoryManager>();
+                                _container.Register<IJobGaugeMemory, JobGaugeMemoryManager>();
 
-                                    _container.Register(new OverlayPluginLogLines(_container));
+                                _container.Register(new OverlayPluginLogLines(_container));
                             }
                             catch (Exception ex)
                             {
@@ -485,10 +485,10 @@ namespace RainbowMage.OverlayPlugin
             //{
             //    var shutdown = Renderer.Shutdown();
 
-                // CN - We just add button to clear cache, the method for upstream will break user data
-                // Can only clear cache if CEF is shut down, otherwise some cache files are still in use.
-                //if (shutdown && this.clearCache == true)
-                    //Renderer.ClearCache();
+            // CN - We just add button to clear cache, the method for upstream will break user data
+            // Can only clear cache if CEF is shut down, otherwise some cache files are still in use.
+            //if (shutdown && this.clearCache == true)
+            //Renderer.ClearCache();
             //}
 
             _logger.Log(LogLevel.Info, "DeInitPlugin: Finalized.");
