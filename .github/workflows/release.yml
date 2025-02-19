@@ -44,7 +44,7 @@ jobs:
     needs: [validate_tag]
     runs-on: windows-latest
     if: |
-      github.repository == 'OverlayPlugin/OverlayPlugin' &&
+      github.repository == 'sandtechnology/OverlayPlugin' &&
       needs.validate_tag.outputs.do_release == 'true'
     steps:
       - uses: actions/checkout@v2
