@@ -9,7 +9,7 @@ namespace RainbowMage.OverlayPlugin
     public class GameRepoInfo
     {
         //CN 7.1
-        public static readonly Version version = new Version(7, 0);
+        public static readonly Version version = new Version(7, 1);
         public static readonly int ActorMoveOpcode = 0x123;
         public static readonly int ActorSetPosOpcode = 0x2BC;
         public static readonly int BattleTalk2Opcode = 0x1C4;

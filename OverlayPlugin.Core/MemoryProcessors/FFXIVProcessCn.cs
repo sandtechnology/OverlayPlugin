@@ -110,7 +110,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors
 
         // Bait integer.
         // Variable is accessed via a cmp eax,[...] line at offset=0.
-        private static String kBaitSignature = "488BCF84C07550E8????????3B05";
+                                                     
+        private static String kBaitSignature = "488BCF84C0756EE8????????3B05";
         private static int kBaitBaseOffset = 0;
         private static bool kBaitBaseRIP = true;
 
