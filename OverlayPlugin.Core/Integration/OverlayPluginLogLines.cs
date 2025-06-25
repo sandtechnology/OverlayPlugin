@@ -57,6 +57,9 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
             opcodes.Add("CountdownCancel", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.CountdownCancelOpcode, size = 40 });
             opcodes.Add("ActorMove", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.ActorMoveOpcode, size = 16 });
             opcodes.Add("ActorSetPos", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.ActorSetPosOpcode, size = 24 });
+            opcodes.Add("MapEffect4", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.MapEffect4Opcode, size = 0 });
+            opcodes.Add("MapEffect8", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.MapEffect8Opcode, size = 0 });
+            opcodes.Add("MapEffect12", new OpcodeConfigEntry { opcode = (uint)GameRepoInfo.MapEffect12Opcode, size = 0 });
         }
         public IOpcodeConfigEntry this[string name]
         {
