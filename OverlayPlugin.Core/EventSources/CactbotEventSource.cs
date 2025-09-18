@@ -218,7 +218,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             pc_locale_ = System.Globalization.CultureInfo.CurrentUICulture.Name;
             var repository = container.Resolve<FFXIVRepository>();
 
-            cactbot_version_ = new Version(0, 35, 0, 0);
+            cactbot_version_ = new Version(0, 35, 3, 0);
             overlay_plugin_version_ = typeof(IOverlay).Assembly.GetName().Version;
             ffxiv_plugin_version_ = repository.GetPluginVersion();
             act_version_ = typeof(ActGlobals).Assembly.GetName().Version;
@@ -745,7 +745,7 @@ namespace RainbowMage.OverlayPlugin.EventSources
             result["language"] = language_;
 
             //It's unknown for ffcafe, but leave stub here should be better incase some overlays using that
-            result["cactbotVersion"] = "0.35.0.0";
+            result["cactbotVersion"] = "0.35.3.0";
             result["overlayPluginVersion"] = overlay_plugin_version_.ToString();
             result["ffxivPluginVersion"] = ffxiv_plugin_version_.ToString();
             result["actVersion"] = act_version_.ToString();
