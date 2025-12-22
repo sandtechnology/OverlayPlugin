@@ -128,6 +128,8 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
                 region_ = "ko";
             else if (language == "cn")
                 region_ = "cn";
+            else if (language == "tc")
+                region_ = "tc";
             else
                 region_ = "intl";
 
@@ -136,6 +138,7 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
             ac143opcodes = new Dictionary<string, AC143OPCodes>();
             ac143opcodes.Add("ko", ac143_v6_3);
             ac143opcodes.Add("cn", ac143_v6_3);
+            ac143opcodes.Add("tc", ac143_v6_3);
             ac143opcodes.Add("intl", ac143_v6_3);
 
             cedirectoropcodes = new Dictionary<string, CEDirectorOPCodes>();
