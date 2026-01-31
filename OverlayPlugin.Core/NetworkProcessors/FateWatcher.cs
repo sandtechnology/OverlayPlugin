@@ -45,10 +45,10 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
             public readonly int remove;
             public readonly int update;
         };
-        private static readonly ActorControlSelfFateUpdateOpcodes acFateUpdate_v5_2 = new ActorControlSelfFateUpdateOpcodes(
+        private static readonly ActorControlSelfFateUpdateOpcodes acFateUpdate_v6_2 = new ActorControlSelfFateUpdateOpcodes(
+          0x942,
           0x935,
-          0x936,
-          0x93E
+          0x93C
         );
 
         [Serializable]
@@ -75,10 +75,10 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
         private static SemaphoreSlim ceSemaphore;
         private Dictionary<GameRegion, ActorControlSelfFateUpdateOpcodes> fateControlOpcodes
             = new Dictionary<GameRegion, ActorControlSelfFateUpdateOpcodes>() {
-                { GameRegion.Korean, acFateUpdate_v5_2 },
-                { GameRegion.Chinese, acFateUpdate_v5_2 },
-                { GameRegion.TraditionalChinese, acFateUpdate_v5_2 },
-                { GameRegion.Global, acFateUpdate_v5_2 },
+                { GameRegion.Korean, acFateUpdate_v6_2 },
+                { GameRegion.Chinese, acFateUpdate_v6_2 },
+                { GameRegion.TraditionalChinese, acFateUpdate_v6_2 },
+                { GameRegion.Global, acFateUpdate_v6_2 },
         };
 
         // fates<fateID, progress>
@@ -87,12 +87,6 @@ namespace RainbowMage.OverlayPlugin.NetworkProcessors
 
         public event EventHandler<FateChangedArgs> OnFateChanged;
         public event EventHandler<CEChangedArgs> OnCEChanged;
-
-        public int GetOffset(Type type, string property)
-        {
-            var netHelper = container_.Resolve<NetworkParser>();
-            return netHelper.GetOffset(type, property);
-        }
 
         public FateWatcher(TinyIoCContainer container)
         {
