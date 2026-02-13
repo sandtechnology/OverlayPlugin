@@ -8,19 +8,19 @@ namespace RainbowMage.OverlayPlugin
 {
     public class GameRepoInfo
     {
-        //CN 7.41
+        //CN 7.41a
         public static readonly Version version = new Version(7, 4);
-        public static readonly int ActorMoveOpcode = 0x013b;
-        public static readonly int ActorSetPosOpcode = 0x0202;
-        public static readonly int BattleTalk2Opcode = 0x012d;
-        public static readonly int CountdownOpcode = 0x0098;
-        public static readonly int CountdownCancelOpcode = 0x0371;
-        public static readonly int CEDirectorOpcode = 0x00f5;
-        public static readonly int MapEffectOpcode = 0x00b6;
-        public static readonly int MapEffect4Opcode = 0x03d0;
-        public static readonly int MapEffect8Opcode = 0x0398;
-        public static readonly int MapEffect12Opcode = 0x0196;
-        public static readonly int RSVDataOpcode = 0x0374;
-        public static readonly int NpcYellOpcode = 0x02ea;
+        public static readonly int ActorMoveOpcode = 0x0192;
+        public static readonly int ActorSetPosOpcode = 0x00B2;
+        public static readonly int BattleTalk2Opcode = 0x018c;
+        public static readonly int CountdownOpcode = 0x01E2;
+        public static readonly int CountdownCancelOpcode = 0x0149;
+        public static readonly int CEDirectorOpcode = 0x0256;
+        public static readonly int MapEffectOpcode = 0x031C;
+        public static readonly int MapEffect4Opcode = 0x01A4;
+        public static readonly int MapEffect8Opcode = 0x00CC;
+        public static readonly int MapEffect12Opcode = 0x03D4;
+        public static readonly int RSVDataOpcode = 0x0201;
+        public static readonly int NpcYellOpcode = 0x0290;
     }
 }
