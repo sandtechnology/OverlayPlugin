@@ -99,7 +99,7 @@ namespace RainbowMage.HtmlRenderer
 
         private void Browser_FrameLoadStart(object sender, FrameLoadStartEventArgs e)
         {
-            if (!e.Frame.IsMain)
+            if (e.Frame?.IsValid != true || !e.Frame.IsMain)
                 return;
 
             lastUrl = e.Url;
