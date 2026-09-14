@@ -102,13 +102,13 @@ namespace RainbowMage.OverlayPlugin.Updater
             });
         }
 
-        public static async Task<bool> DownloadAndExtractTo(string url, string tmpName, string destDir, string archiveDir, string message, string archiveDir2 = null)
+        public static async Task<bool> DownloadAndExtractTo(string url, string tmpName, string destDir, string[] archiveDirs, string message)
         {
             var inst = new Installer(destDir, tmpName);
-            return await DownloadAndExtractTo(inst, tmpName, destDir, archiveDir, message, archiveDir2);
+            return await DownloadAndExtractTo(inst, url, tmpName, destDir, archiveDirs, message);
         }
 
-        public static async Task<bool> DownloadAndExtractTo(Installer inst, string url, string tmpName, string destDir, string archiveDir, string message, string archiveDir2 = null)
+        public static async Task<bool> DownloadAndExtractTo(Installer inst, string url, string tmpName, string destDir, string[] archiveDirs, string message)
         {
 
             return await Task.Run(() =>
@@ -125,32 +125,12 @@ namespace RainbowMage.OverlayPlugin.Updater
                 using (var archive = ArchiveFactory.Open(temp))
                 {
                     var options = new SharpCompress.Common.ExtractionOptions() { Overwrite = true };
-                    var entries = archive.Entries.Where(x => x.Key.StartsWith(archiveDir) && !x.IsDirectory);
-                    foreach (var entry in entries)
+                    foreach (var archiveDir in archiveDirs)
                     {
-                        var filename = Path.Combine(destDir, entry.Key.Substring(archiveDir.Length));
-                        var fileInfo = new FileInfo(filename);
-                        fileInfo.Directory.Create();
-                        try
-                        {
-                            entry.WriteToFile(fileInfo.FullName, options);
-                        }
-                        catch (Exception e)
-                        {
-                            entry.WriteToFile(fileInfo.FullName + ".cafestoreupdate", options);
-                        }
-                    }
-                }
-
-                if (archiveDir2 != null)
-                {
-                    using (var archive = ArchiveFactory.Open(temp))
-                    {
-                        var options = new SharpCompress.Common.ExtractionOptions() { Overwrite = true };
-                        var entries = archive.Entries.Where(x => x.Key.StartsWith(archiveDir2) && !x.IsDirectory);
+                        var entries = archive.Entries.Where(x => x.Key.StartsWith(archiveDir) && !x.IsDirectory);
                         foreach (var entry in entries)
                         {
-                            var filename = Path.Combine(destDir, entry.Key.Substring(archiveDir2.Length));
+                            var filename = Path.Combine(destDir, entry.Key.Substring(archiveDir.Length));
                             var fileInfo = new FileInfo(filename);
                             fileInfo.Directory.Create();
                             try

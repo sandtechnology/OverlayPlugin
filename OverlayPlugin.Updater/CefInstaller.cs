@@ -110,13 +110,13 @@ namespace RainbowMage.OverlayPlugin.Updater
             Directory.CreateDirectory(cefPath);
             try
             {
-                var result = await RetryDownloadAndExtractTo("CefSharp.Common", CEF_VERSION, "OverlayPluginCef.tmp2", cefPath, "CefSharp/x64/", "第1个，共3个", "lib/net452/");
+                var result = await RetryDownloadAndExtractTo("CefSharp.Common", CEF_VERSION, "OverlayPluginCef.tmp2", cefPath, new string[] { "CefSharp/x64/", "lib/net462/" }, "第1个，共3个");
                 if (!result) throw new Exception("下载失败1");
 
-                result = await RetryDownloadAndExtractTo("CefSharp.OffScreen", CEF_VERSION, "OverlayPluginCef.tmp3", cefPath, "lib/net452/", "第2个，共3个");
+                result = await RetryDownloadAndExtractTo("CefSharp.OffScreen", CEF_VERSION, "OverlayPluginCef.tmp3", cefPath, new string[] { "lib/net462/" }, "第2个，共3个");
                 if (!result) throw new Exception("下载失败2");
 
-                result = await RetryDownloadAndExtractTo("chromiumembeddedframework.runtime.win-x64", CEF_REDIST_VERSION, "OverlayPluginCef.tmp1", cefPath, "CEF/", "第3个，共3个");
+                result = await RetryDownloadAndExtractTo("chromiumembeddedframework.runtime.win-x64", CEF_REDIST_VERSION, "OverlayPluginCef.tmp1", cefPath, new string[] { "CEF/win-x64/", "runtimes/win-x64/native/" }, "第3个，共3个");
                 if (!result) throw new Exception("下载失败3");
 
                 File.WriteAllText(Path.Combine(cefPath, "version.txt"), CEF_VERSION);
@@ -135,7 +135,7 @@ namespace RainbowMage.OverlayPlugin.Updater
             return true;
         }
 
-        public static async Task<bool> RetryDownloadAndExtractTo(string packageName, string version, string tmpName, string destDir, string archiveDir, string message, string archiveDir2 = null)
+        public static async Task<bool> RetryDownloadAndExtractTo(string packageName, string version, string tmpName, string destDir, string[] archiveDirs, string message)
         {
             List<Installer> failedInstaller = new List<Installer>();
             for (var i = 0; i < 4; i++)
@@ -145,7 +145,7 @@ namespace RainbowMage.OverlayPlugin.Updater
                     var installer = new Installer(destDir, tmpName);
                     try
                     {
-                        bool result = await Installer.DownloadAndExtractTo(installer, GetNupkgUrl(packageName, version, i), tmpName, destDir, archiveDir, message, archiveDir2);
+                        bool result = await Installer.DownloadAndExtractTo(installer, GetNupkgUrl(packageName, version, i), tmpName, destDir, archiveDirs, message);
                         if (result)
                         {
 
@@ -194,8 +194,7 @@ namespace RainbowMage.OverlayPlugin.Updater
         public static string GetNupkgUrl(string packageName, string version, int index)
         {
             var list = new[]{
-                $"https://repo.huaweicloud.com/repository/nuget/v3-flatcontainer/{packageName.ToLower()}/{version}/{packageName.ToLower()}.{version}.nupkg",
-                $"https://nuget.cdn.azure.cn/v3-flatcontainer/{packageName.ToLower()}/{version}/{packageName.ToLower()}.{version}.nupkg",
+                $"https://mirrors.huaweicloud.com/artifactory/api/nuget/v3/nuget-remote/{packageName.ToLower()}/{version}/{packageName.ToLower()}.{version}.nupkg",
                 $"https://mirrors.cloud.tencent.com/repository/nuget-group/{packageName.ToLower()}/{version}",
                 $"https://api.nuget.org/v3-flatcontainer/{packageName.ToLower()}/{version}/{packageName.ToLower()}.{version}.nupkg",
             };
