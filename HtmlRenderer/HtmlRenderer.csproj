@@ -41,19 +41,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="cef.redist.x64" Version="103.0.12" />
-    <PackageReference Include="CefSharp.Common" Version="103.0.120" Condition="'$(Configuration)' == 'Debug'" />
-    <PackageReference Include="CefSharp.OffScreen" Version="103.0.120" Condition="'$(Configuration)' == 'Debug'" />
-    <PackageReference Include="CefSharp.Common" Version="103.0.120" Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="CefSharp.Common" Version="151.3.240" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="CefSharp.OffScreen" Version="151.3.240" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="CefSharp.Common" Version="151.3.240" Condition="'$(Configuration)' == 'Release'">
       <IncludeAssets>compile</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="CefSharp.OffScreen" Version="103.0.120" Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="CefSharp.OffScreen" Version="151.3.240" Condition="'$(Configuration)' == 'Release'">
       <IncludeAssets>compile</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <PackageReference Include="chromiumembeddedframework.runtime.win-x64" Version="151.3.24" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>

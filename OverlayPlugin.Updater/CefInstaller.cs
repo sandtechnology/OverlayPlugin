@@ -13,8 +13,8 @@ namespace RainbowMage.OverlayPlugin.Updater
 {
     public class CefInstaller
     {
-        const string CEF_VERSION = "103.0.120";
-        const string CEF_REDIST_VERSION = "103.0.12";
+        const string CEF_VERSION = "151.3.240";
+        const string CEF_REDIST_VERSION = "151.3.24";
 
         public static string GetUrl()
         {
@@ -116,7 +116,7 @@ namespace RainbowMage.OverlayPlugin.Updater
                 result = await RetryDownloadAndExtractTo("CefSharp.OffScreen", CEF_VERSION, "OverlayPluginCef.tmp3", cefPath, "lib/net452/", "第2个，共3个");
                 if (!result) throw new Exception("下载失败2");
 
-                result = await RetryDownloadAndExtractTo("cef.redist.x64", CEF_REDIST_VERSION, "OverlayPluginCef.tmp1", cefPath, "CEF/", "第3个，共3个");
+                result = await RetryDownloadAndExtractTo("chromiumembeddedframework.runtime.win-x64", CEF_REDIST_VERSION, "OverlayPluginCef.tmp1", cefPath, "CEF/", "第3个，共3个");
                 if (!result) throw new Exception("下载失败3");
 
                 File.WriteAllText(Path.Combine(cefPath, "version.txt"), CEF_VERSION);
