@@ -426,6 +426,10 @@ namespace RainbowMage.HtmlRenderer
             if (string.IsNullOrWhiteSpace(cachePath))
                 throw new ArgumentException("cachePath must be non-empty value", nameof(cachePath));
 
+            // Do not migrate for new installation
+            if (!Directory.Exists(cachePath))
+                return;
+
             string[] foldersToCopy =
             {
                 "Cache",
