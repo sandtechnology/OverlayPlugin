@@ -434,7 +434,8 @@ namespace RainbowMage.HtmlRenderer
                 "Local Storage",
                 "IndexedDB",
                 "Network",
-                "blob_storage"
+                "blob_storage",
+                "databases",
             };
 
             string defaultDir = Path.Combine(cachePath, "Default");
