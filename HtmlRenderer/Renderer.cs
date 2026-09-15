@@ -420,6 +420,59 @@ namespace RainbowMage.HtmlRenderer
             return null;
         }
 
+
+        private static void MigrateUserData(string cachePath)
+        {
+            if (string.IsNullOrWhiteSpace(cachePath))
+                throw new ArgumentException("cachePath must be non-empty value", nameof(cachePath));
+
+            string[] foldersToCopy =
+            {
+                "Cache",
+                "WebStorage",
+                "Session Storage",
+                "Local Storage",
+                "IndexedDB",
+                "Network",
+                "blob_storage"
+            };
+
+            string defaultDir = Path.Combine(cachePath, "Default");
+
+            // Do not override existing files
+            if (Directory.Exists(defaultDir))
+                return;
+
+            Directory.CreateDirectory(defaultDir);
+
+            foreach (var folder in foldersToCopy)
+            {
+                string sourceDir = Path.Combine(cachePath, folder);
+                if (!Directory.Exists(sourceDir))
+                    continue;
+
+                string destDir = Path.Combine(defaultDir, folder);
+                CopyDirectory(sourceDir, destDir);
+            }
+        }
+
+        private static void CopyDirectory(string sourceDir, string destDir)
+        {
+            Directory.CreateDirectory(destDir);
+
+            foreach (var file in Directory.GetFiles(sourceDir))
+            {
+                string destFile = Path.Combine(destDir, Path.GetFileName(file));
+                File.Copy(file, destFile, false);
+            }
+
+            foreach (var subDir in Directory.GetDirectories(sourceDir))
+            {
+                string destSubDir = Path.Combine(destDir, Path.GetFileName(subDir));
+                CopyDirectory(subDir, destSubDir);
+            }
+        }
+
         public async void ClearCache()
         {
             try
@@ -512,6 +565,9 @@ namespace RainbowMage.HtmlRenderer
                 }
 
                 CachePath = Path.Combine(appDataDirectory, "OverlayPluginCache");
+
+                // Due to user data path changes on newer cef version, we need to migrate data
+                MigrateUserData(CachePath);
 
                 var cefSettings = new CefSettings
                 {
