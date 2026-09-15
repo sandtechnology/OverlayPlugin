@@ -545,7 +545,7 @@ namespace RainbowMage.HtmlRenderer
                 cefSettings.CefCommandLineArgs["autoplay-policy"] = "no-user-gesture-required";
 
                 // Skip local network check for ovelay needs local websocket services
-                settings.CefCommandLineArgs.Add("disable-features", "LocalNetworkAccessChecks");
+                cefSettings.CefCommandLineArgs.Add("disable-features", "LocalNetworkAccessChecks");
 
                 // Disable Flash. We don't need it and it can cause issues.
                 cefSettings.CefCommandLineArgs.Remove("enable-system-flash");
