@@ -41,8 +41,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="151.3.240" Condition="'$(Configuration)' == 'Debug'" />
-    <PackageReference Include="CefSharp.OffScreen" Version="151.3.240" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="CefSharp.Common" Version="154.0.340" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="CefSharp.OffScreen" Version="154.0.340" Condition="'$(Configuration)' == 'Debug'" />
     <PackageReference Include="CefSharp.Common" Version="154.0.340" Condition="'$(Configuration)' == 'Release'">
       <IncludeAssets>compile</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
