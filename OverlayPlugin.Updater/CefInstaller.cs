@@ -13,8 +13,8 @@ namespace RainbowMage.OverlayPlugin.Updater
 {
     public class CefInstaller
     {
-        const string CEF_VERSION = "151.3.240";
-        const string CEF_REDIST_VERSION = "151.3.24";
+        const string CEF_VERSION = "154.0.340";
+        const string CEF_REDIST_VERSION = "154.0.34";
 
         public static string GetUrl()
         {
